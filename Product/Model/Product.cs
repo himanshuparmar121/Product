@@ -16,10 +16,10 @@ namespace Product.Model
         [Required]
         public double Quantity { get; set; }
         [Required]
-        public string UOM { get; set; }
+        public string UnitOfMeasure { get; set; }
         [Required]
-        public int? ProductId { get; set; }
-        [ForeignKey("ProductId")]
+        public int? ParentId { get; set; }
+        [ForeignKey("ParentId")]
         public Product Products { get; set; }
     }
 }
