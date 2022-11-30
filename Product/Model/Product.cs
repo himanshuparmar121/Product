@@ -16,7 +16,7 @@ namespace Product.Model
         [Required]
         public double Quantity { get; set; }
         [Required]
-        public double UOM { get; set; }
+        public string UOM { get; set; }
         [Required]
         public int? ProductId { get; set; }
         [ForeignKey("ProductId")]
