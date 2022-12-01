@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Product.Models
 {
-    public class Product
+    public class Item
     {
         [Key]
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace Product.Models
         public bool IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
         public bool IsDelete { get; set; }
-        public DateTime? UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }  
     }
 }

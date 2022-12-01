@@ -13,7 +13,7 @@ namespace Product.Models
         public int Id { get; set; }
         public int ParentProductId { get; set; }
         [ForeignKey("ParentProductId")]
-        public Product Products { get; set; }
+        public Item Item { get; set; }
         [Required]
         public double Quantity { get; set; }
         public bool IsActive { get; set; }
