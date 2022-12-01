@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Product.Model
+namespace Product.Models
 {
     public class Product
     {
@@ -17,9 +17,9 @@ namespace Product.Model
         public double Quantity { get; set; }
         [Required]
         public string UnitOfMeasure { get; set; }
-        [Required]
-        public int? ParentId { get; set; }
-        [ForeignKey("ParentId")]
-        public Product Products { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public bool IsDelete { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }
