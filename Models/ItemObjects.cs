@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Product.Models
 {
-    public class ProductObjects
+    public class ItemObjects
     {
         [Key]
         public int Id { get; set; }
-        public int ParentProductId { get; set; }
-        [ForeignKey("ParentProductId")]
+        public int ParentItemId { get; set; }
+        [ForeignKey("ParentItemId")]
         public Item Item { get; set; }
         [Required]
         public double Quantity { get; set; }
