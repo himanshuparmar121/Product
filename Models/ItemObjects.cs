@@ -11,9 +11,9 @@ namespace Product.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ParentItemId { get; set; }
-        [ForeignKey("ParentItemId")]
-        public Item Item { get; set; }
+        public int ItemId { get; set; }
+        [ForeignKey("ItemId")]
+        virtual public Item Item { get; set; }
         [Required]
         public double Quantity { get; set; }
         public bool IsActive { get; set; }
