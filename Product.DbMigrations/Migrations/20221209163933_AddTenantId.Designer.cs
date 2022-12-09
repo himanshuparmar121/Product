@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Product.DbMigrations;
 
@@ -11,9 +12,11 @@ using Product.DbMigrations;
 namespace Product.DbMigrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221209163933_AddTenantId")]
+    partial class AddTenantId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,21 +36,34 @@ namespace Product.DbMigrations.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
+                    b.Property<long>("LotNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ManufacturingDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("float");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UniqueId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UnitOfMeasure")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -75,31 +91,49 @@ namespace Product.DbMigrations.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ItemId")
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("float");
+
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ItemId");
+                    b.HasIndex("ParentProductId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ItemObjects");
                 });
 
             modelBuilder.Entity("Product.Models.ItemObjects", b =>
                 {
+                    b.HasOne("Product.Models.Item", "ParentItem")
+                        .WithMany()
+                        .HasForeignKey("ParentProductId");
+
                     b.HasOne("Product.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.Navigation("Item");
+
+                    b.Navigation("ParentItem");
                 });
 #pragma warning restore 612, 618
         }

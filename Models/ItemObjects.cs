@@ -11,13 +11,16 @@ namespace Product.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ItemId { get; set; }
-        [ForeignKey("ItemId")]
-        virtual public Item Item { get; set; }
-        [Required]
+        public int? ParentItemId { get; set; }
+        [ForeignKey("ParentProductId")]
+        public virtual Item ParentItem { get; set; }
+        public int? ItemId { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Item Item { get; set; }
+        public int TenantId { get; set; }
         public double Quantity { get; set; }
         public bool IsActive { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public bool IsDelete { get; set; }
         public DateTime? UpdatedDate { get; set; }
     }

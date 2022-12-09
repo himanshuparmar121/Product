@@ -17,5 +17,6 @@ namespace Product.DbMigrations
 
         DbSet<Item> Items { get; set; }
         DbSet<ItemObjects> ItemObjects { get; set; }
+
     }
 }

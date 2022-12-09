@@ -11,15 +11,17 @@ namespace Product.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        public int TenantId { get; set; }
+        public string UniqueId { get; set; }
         public string Name { get; set; }
-        [Required]
         public double Quantity { get; set; }
-        [Required]
+        public long LotNumber { get; set; }
         public string UnitOfMeasure { get; set; }
         public bool IsActive { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? ManufacturingDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public bool IsDelete { get; set; }
-        public DateTime? UpdatedDate { get; set; }  
+        public DateTime? UpdatedDate { get; set; }
     }
 }
