@@ -1,22 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Product.Models;
+using Product.Schema.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Product.DbMigrations
+namespace Product.DbMigrations.DBContext
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        ApplicationDbContext applicationDb;
+        public ApplicationDbContext(DbContextOptions<MigrationDbContext> options)
         : base(options)
         {
+            applicationDb = new ApplicationDbContext(options);
         }
-
-        DbSet<Item> Items { get; set; }
-        DbSet<ItemObjects> ItemObjects { get; set; }
-
     }
 }

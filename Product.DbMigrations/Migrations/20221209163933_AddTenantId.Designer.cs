@@ -11,7 +11,7 @@ using Product.DbMigrations;
 
 namespace Product.DbMigrations.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(MigrationDbContext))]
     [Migration("20221209163933_AddTenantId")]
     partial class AddTenantId
     {

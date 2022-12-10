@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Models\Product.Models.csproj" />
+    <ProjectReference Include="..\Product.DbMigrations\Product.DbMigrations.csproj" />
+    <ProjectReference Include="..\Product.Schema\Product.Schema.csproj" />
   </ItemGroup>
 
 </Project>
