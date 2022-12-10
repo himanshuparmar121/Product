@@ -11,11 +11,11 @@ namespace Product.Models
     {
         [Key]
         public int Id { get; set; }
-        public int? ParentItemId { get; set; }
-        [ForeignKey("ParentProductId")]
+        public int? ParentItemIdItemId { get; set; }
+        [ForeignKey("ParentItemIdItemId")]
         public virtual Item ParentItem { get; set; }
         public int? ItemId { get; set; }
-        [ForeignKey("ProductId")]
+        [ForeignKey("ItemId")]
         public virtual Item Item { get; set; }
         public int TenantId { get; set; }
         public double Quantity { get; set; }
