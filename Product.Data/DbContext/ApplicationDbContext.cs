@@ -15,7 +15,7 @@ namespace Product.Data
         {
         }
 
-        public DbSet<Item> Items { get; set; }
-        public DbSet<ItemObjects> ItemObjects { get; set; }
+        public DbSet<Schema.Models.Item> Items { get; set; }
+        public DbSet<Schema.Models.ItemObjects> ItemObjects { get; set; }
     }
 }
