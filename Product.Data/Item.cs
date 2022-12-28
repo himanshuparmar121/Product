@@ -9,33 +9,33 @@ namespace Product.Data
 {
     public class Item
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext ProductDbContext;
 
-        public Item(ApplicationDbContext dbContext)
+        public Item(ApplicationDbContext _dbContext)
         {
-            this.dbContext = dbContext;
+            ProductDbContext = _dbContext;
         }
 
         public void AddItem(Schema.Models.Item item)
         {
-            dbContext.Items.Add(item);
-            dbContext.SaveChanges();
+            ProductDbContext.Items.Add(item);
+            ProductDbContext.SaveChanges();
         }
 
-        public Schema.Models.Item? GetItemById(int? id, int? tenantId)
+        public Schema.Models.Item? GetItemById(int id, int tenantId)
         {
-            Schema.Models.Item? item = dbContext.Items.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+            Schema.Models.Item? item = ProductDbContext.Items.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
             return item;
         }
 
         public IEnumerable<Schema.Models.Item> GetAllItems()
         {
-            return dbContext.Items.ToList();
+            return ProductDbContext.Items.ToList();
         }
 
         public void Update(Schema.Models.Item item)
         {
-            Schema.Models.Item? objItem = dbContext.Items.Where(x => x.Id == item.Id && x.TenantId == item.TenantId).FirstOrDefault();
+            Schema.Models.Item? objItem = ProductDbContext.Items.Where(x => x.Id == item.Id && x.TenantId == item.TenantId).FirstOrDefault();
 
             if (objItem != null)
             {
@@ -44,19 +44,30 @@ namespace Product.Data
                 objItem.Name = item.Name;
                 objItem.UpdatedDate = DateTime.Now;
                 objItem.UnitOfMeasure = item.UnitOfMeasure;
+                ProductDbContext.SaveChanges();
             }
-            dbContext.SaveChanges();
         }
 
         public void RemoveItem(int id, int tenantId)
         {
-            Schema.Models.Item? item = dbContext.Items.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+            Schema.Models.Item? item = ProductDbContext.Items.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
 
             if (item != null)
             {
-                dbContext.Items.Remove(item);
+                ProductDbContext.Items.Remove(item);
+                ProductDbContext.SaveChanges(true);
             }
-            dbContext.SaveChanges(true);
+        }
+
+        public void DeleteItemByFlag(int id, int tenantId)
+        {
+            Schema.Models.Item? item = ProductDbContext.Items.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+
+            if (item != null)
+            {
+                item.IsDelete = true;
+                ProductDbContext.SaveChanges(true);
+            }
         }
     }
 }

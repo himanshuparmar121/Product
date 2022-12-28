@@ -8,34 +8,34 @@ namespace Product.Data
 {
     public class ItemObjects
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext ProductDbContext;
 
-        public ItemObjects(ApplicationDbContext dbContext)
+        public ItemObjects(ApplicationDbContext _dbContext)
         {
-            this.dbContext = dbContext;
+            ProductDbContext = _dbContext;
         }
 
         public void AddItemObject(Schema.Models.ItemObjects itemObjects)
         {
-            dbContext.ItemObjects.Add(itemObjects);
-            dbContext.SaveChanges();
+            ProductDbContext.ItemObjects.Add(itemObjects);
+            ProductDbContext.SaveChanges();
         }
 
-        public Schema.Models.ItemObjects? GetItemObjectsById(int? id, int? tenantId)
+        public Schema.Models.ItemObjects? GetItemObjectsById(int id, int tenantId)
         {
-            Schema.Models.ItemObjects? itemobject = dbContext.ItemObjects.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+            Schema.Models.ItemObjects? itemobject = ProductDbContext.ItemObjects.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
 
             return itemobject;
         }
 
         public IEnumerable<Schema.Models.ItemObjects> GetAllItemObjects()
         {
-            return dbContext.ItemObjects.ToList();
+            return ProductDbContext.ItemObjects.ToList();
         }
 
         public void Update(Schema.Models.ItemObjects itemObject)
         {
-            Schema.Models.ItemObjects? item = dbContext.ItemObjects.Where(x => x.Id == itemObject.Id && x.TenantId == itemObject.TenantId).FirstOrDefault();
+            Schema.Models.ItemObjects? item = ProductDbContext.ItemObjects.Where(x => x.Id == itemObject.Id && x.TenantId == itemObject.TenantId).FirstOrDefault();
 
             if (item != null)
             {
@@ -46,20 +46,30 @@ namespace Product.Data
                 item.ParentItemIdItemId = itemObject.ParentItemIdItemId;
                 item.UpdatedDate = DateTime.Now;
                 item.Quantity = itemObject.Quantity;
+                ProductDbContext.SaveChanges();
             }
-
-            dbContext.SaveChanges();
         }
 
         public void RemoveItemObject(int id, int tenantId)
         {
-            Schema.Models.ItemObjects? item = dbContext.ItemObjects.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+            Schema.Models.ItemObjects? item = ProductDbContext.ItemObjects.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
 
             if (item != null)
             {
-                dbContext.ItemObjects.Remove(item);
+                ProductDbContext.ItemObjects.Remove(item);
+                ProductDbContext.SaveChanges();
             }
-            dbContext.SaveChanges();
+        }
+
+        public void DeleteItemObjectsByFlag(int id, int tenantId)
+        {
+            Schema.Models.ItemObjects? item = ProductDbContext.ItemObjects.Where(x => x.Id == id && x.TenantId == tenantId).FirstOrDefault();
+
+            if (item != null)
+            {
+                item.IsDelete = true;
+                ProductDbContext.SaveChanges(true);
+            }
         }
     }
 }
