@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Product.DbMigrations;
-using Product.DbMigrations.DBContext;
+using Product.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

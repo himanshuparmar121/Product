@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Product.DbMigrations.DBContext
+namespace Product.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        ApplicationDbContext applicationDb;
-        public ApplicationDbContext(DbContextOptions<MigrationDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
         {
-            applicationDb = new ApplicationDbContext(options);
         }
+
+        public DbSet<Schema.Models.Item> Items { get; set; }
+        public DbSet<Schema.Models.ItemObjects> ItemObjects { get; set; }
     }
 }
