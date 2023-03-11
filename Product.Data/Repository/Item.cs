@@ -1,13 +1,14 @@
-﻿using Product.Schema.Models;
+﻿using Product.Data.IRepository;
+using Product.Schema.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Product.Data
+namespace Product.Data.Repository
 {
-    public class Item
+    public class Item : IItemRepository
     {
         private readonly ApplicationDbContext ProductDbContext;
 

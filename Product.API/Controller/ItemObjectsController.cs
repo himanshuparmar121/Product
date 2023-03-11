@@ -44,8 +44,8 @@ namespace Product.API.Controller
             _itemObjectsService.RemoveItemObject(id, tenantId);
         }
 
-        [HttpPost("deleteItemObjectByFlag")]
-        public void DeleteItemObjectByFlag(int id, int tenantId)
+        [HttpPost("delete")]
+        public void softDelete(int id, int tenantId)
         {
             _itemObjectsService.DeleteItemObjectsByFlag(id, tenantId);
         }

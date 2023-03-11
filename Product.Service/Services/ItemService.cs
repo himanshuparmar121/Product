@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Product.Data;
+using Product.Data.IRepository;
+using Product.Data.Repository;
 using Product.Schema.Models;
 using Product.Service.IServices;
 using System;
@@ -12,44 +14,39 @@ namespace Product.Service.Services
 {
     public class ItemService : IItemService
     {
-        private readonly ApplicationDbContext ProductDbContext;
-        Data.Item Item;
-        public ItemService(ApplicationDbContext _dbContext)
+        private IItemRepository _itemRepository;
+        public ItemService(IItemRepository itemRepository)
         {
-            ProductDbContext = _dbContext;
-            if (ProductDbContext != null)
-            {
-                Item = new Data.Item(ProductDbContext);
-            }
+            _itemRepository = itemRepository;
         }
         public void AddItem(Schema.Models.Item item)
         {
-            Item.AddItem(item);
+            _itemRepository.AddItem(item);
         }
 
         public void DeleteItemByFlag(int id, int tenantId)
         {
-            Item.DeleteItemByFlag(id, tenantId);
+            _itemRepository.DeleteItemByFlag(id, tenantId);
         }
 
         public IEnumerable<Schema.Models.Item> GetAllItems()
         {
-            return Item.GetAllItems();
+            return _itemRepository.GetAllItems();
         }
 
         public Schema.Models.Item? GetItemById(int id, int tenantId)
         {
-            return Item.GetItemById(id, tenantId);
+            return _itemRepository.GetItemById(id, tenantId);
         }
 
         public void RemoveItem(int id, int tenantId)
         {
-            Item.RemoveItem(id, tenantId);
+            _itemRepository.RemoveItem(id, tenantId);
         }
 
         public void Update(Schema.Models.Item item)
         {
-            Item.Update(item);
+            _itemRepository.Update(item);
         }
     }
 }

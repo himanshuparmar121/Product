@@ -30,7 +30,7 @@ namespace Product.API.Controller
         }
 
         // POST api/<ItemsController>
-        [HttpPost("addItem")]
+        [HttpPost("add")]
         public void AddItem(Schema.Models.Item item)
         {
             _itemService.AddItem(item);
@@ -50,8 +50,8 @@ namespace Product.API.Controller
             _itemService.RemoveItem(id, tenantId);
         }
 
-        [HttpPost("deleteItemByFlag")]
-        public void DeleteItemByFlag(int id, int tenantId)
+        [HttpPost("delete")]
+        public void softDelete(int id, int tenantId)
         {
             _itemService.DeleteItemByFlag(id, tenantId);
         }
