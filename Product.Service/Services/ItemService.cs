@@ -29,9 +29,9 @@ namespace Product.Service.Services
             _itemRepository.DeleteItemByFlag(id, tenantId);
         }
 
-        public IEnumerable<Schema.Models.Item> GetAllItems()
+        public IEnumerable<Schema.Models.Item> GetAllItems(int tenantId)
         {
-            return _itemRepository.GetAllItems();
+            return _itemRepository.GetAllItems(tenantId);
         }
 
         public Schema.Models.Item? GetItemById(int id, int tenantId)

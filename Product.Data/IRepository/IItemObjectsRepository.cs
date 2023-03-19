@@ -10,7 +10,7 @@ namespace Product.Data.IRepository
     {
         void AddItemObject(Schema.Models.ItemObjects itemObjects);
         Schema.Models.ItemObjects? GetItemObjectsById(int id, int tenantId);
-        IEnumerable<Schema.Models.ItemObjects> GetAllItemObjects();
+        IEnumerable<Schema.Models.ItemObjects> GetAllItemObjects(int tenantId);
         void Update(Schema.Models.ItemObjects itemObject);
         void RemoveItemObject(int id, int tenantId);
         void DeleteItemObjectsByFlag(int id, int tenantId);

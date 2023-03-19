@@ -29,9 +29,9 @@ namespace Product.Data.Repository
             return item;
         }
 
-        public IEnumerable<Schema.Models.Item> GetAllItems()
+        public IEnumerable<Schema.Models.Item> GetAllItems(int tenantId)
         {
-            return ProductDbContext.Items.ToList();
+            return ProductDbContext.Items.Where(x => x.TenantId == tenantId).ToList();
         }
 
         public void Update(Schema.Models.Item item)

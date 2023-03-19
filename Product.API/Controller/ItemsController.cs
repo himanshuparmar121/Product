@@ -17,9 +17,9 @@ namespace Product.API.Controller
 
         // GET: api/<ItemsController>
         [HttpGet("getAll")]
-        public IActionResult GetAllItems()
+        public IActionResult GetAllItems(int tenantId)
         {
-            return Ok(_itemService.GetAllItems());
+            return Ok(_itemService.GetAllItems(tenantId));
         }
 
         // GET api/<ItemsController>/5

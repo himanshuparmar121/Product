@@ -15,9 +15,9 @@ namespace Product.API.Controller
         }
 
         [HttpGet("getAll")]
-        public IActionResult GetAllItemObjects()
+        public IActionResult GetAllItemObjects(int tenantId)
         {
-            return Ok(_itemObjectsService.GetAllItemObjects());
+            return Ok(_itemObjectsService.GetAllItemObjects(tenantId));
         }
 
         [HttpGet("getById")]
