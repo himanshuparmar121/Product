@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Product.DbMigrations.Migrations;
 using Product.Service.IServices;
 
 namespace Product.API.Controller
@@ -8,6 +9,7 @@ namespace Product.API.Controller
     public class ItemObjectsController : ControllerBase
     {
         private readonly IItemObjectsService _itemObjectsService;
+        static int tenantId = 1;
 
         public ItemObjectsController(IItemObjectsService itemObjectsService)
         {
@@ -15,13 +17,13 @@ namespace Product.API.Controller
         }
 
         [HttpGet("getAll")]
-        public IActionResult GetAllItemObjects(int tenantId)
+        public IActionResult GetAllItemObjects()
         {
             return Ok(_itemObjectsService.GetAllItemObjects(tenantId));
         }
 
         [HttpGet("getById")]
-        public IActionResult GetItemObjectsById(int id, int tenantId)
+        public IActionResult GetItemObjectsById(int id)
         {
             return Ok(_itemObjectsService.GetItemObjectsById(id, tenantId));
         }
@@ -39,13 +41,13 @@ namespace Product.API.Controller
         }
 
         [HttpPost("remove")]
-        public void RemoveItemObject(int id, int tenantId)
+        public void RemoveItemObject(int id)
         {
             _itemObjectsService.RemoveItemObject(id, tenantId);
         }
 
         [HttpPost("delete")]
-        public void softDelete(int id, int tenantId)
+        public void softDelete(int id)
         {
             _itemObjectsService.DeleteItemObjectsByFlag(id, tenantId);
         }

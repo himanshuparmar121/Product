@@ -9,7 +9,7 @@ namespace Product.API.Controller
     public class ItemsController : ControllerBase
     {
         private readonly IItemService _itemService;
-
+        static int tenantId = 1;
         public ItemsController(IItemService itemService)
         {
             _itemService = itemService;
@@ -17,14 +17,14 @@ namespace Product.API.Controller
 
         // GET: api/<ItemsController>
         [HttpGet("getAll")]
-        public IActionResult GetAllItems(int tenantId)
+        public IActionResult GetAllItems()
         {
             return Ok(_itemService.GetAllItems(tenantId));
         }
 
         // GET api/<ItemsController>/5
         [HttpGet("getById")]
-        public IActionResult GetItemById(int id, int tenantId)
+        public IActionResult GetItemById(int id)
         {
             return Ok(_itemService.GetItemById(id, tenantId));
         }
@@ -45,13 +45,13 @@ namespace Product.API.Controller
 
         // DELETE api/<ItemsController>/5
         [HttpPost("remove")]
-        public void RemoveItem(int id, int tenantId)
+        public void RemoveItem(int id)
         {
             _itemService.RemoveItem(id, tenantId);
         }
 
         [HttpPost("delete")]
-        public void softDelete(int id, int tenantId)
+        public void softDelete(int id)
         {
             _itemService.DeleteItemByFlag(id, tenantId);
         }

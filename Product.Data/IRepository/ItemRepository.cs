@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Product.Data.IRepository
 {
-    public interface IItemRepository
+    public interface ItemRepository
     {
         void AddItem(Schema.Models.Item item);
         Schema.Models.Item? GetItemById(int id, int tenantId);
