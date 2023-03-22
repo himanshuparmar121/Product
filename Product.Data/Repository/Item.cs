@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Product.Data.Repository
 {
-    public class Item : IItemRepository
+    public class Item : ItemRepository
     {
         private readonly ApplicationDbContext ProductDbContext;
 

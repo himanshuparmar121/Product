@@ -14,8 +14,8 @@ namespace Product.Service.Services
 {
     public class ItemService : IItemService
     {
-        private IItemRepository _itemRepository;
-        public ItemService(IItemRepository itemRepository)
+        private ItemRepository _itemRepository;
+        public ItemService(ItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
         }
