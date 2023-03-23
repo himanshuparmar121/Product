@@ -9,7 +9,7 @@ namespace Product.API.Controller
     public class ItemsController : ControllerBase
     {
         private readonly IItemService _itemService;
-        static int tenantId = 1;
+        private int tenantId = 1;
         public ItemsController(IItemService itemService)
         {
             _itemService = itemService;
@@ -33,6 +33,7 @@ namespace Product.API.Controller
         [HttpPost("add")]
         public void AddItem(Schema.Models.Item item)
         {
+            item.TenantId = tenantId;
             _itemService.AddItem(item);
         }
 
@@ -40,6 +41,7 @@ namespace Product.API.Controller
         [HttpPost("update")]
         public void Update(Schema.Models.Item item)
         {
+            item.TenantId = tenantId;
             _itemService.Update(item);
         }
 

@@ -19,6 +19,7 @@ namespace Product.Service.Services
         {
             _itemRepository = itemRepository;
         }
+
         public void AddItem(Schema.Models.Item item)
         {
             _itemRepository.AddItem(item);

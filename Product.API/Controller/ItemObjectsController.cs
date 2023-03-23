@@ -9,7 +9,7 @@ namespace Product.API.Controller
     public class ItemObjectsController : ControllerBase
     {
         private readonly IItemObjectsService _itemObjectsService;
-        static int tenantId = 1;
+        private int tenantId = 1;
 
         public ItemObjectsController(IItemObjectsService itemObjectsService)
         {
@@ -31,12 +31,14 @@ namespace Product.API.Controller
         [HttpPost("addItemObject")]
         public void AddItemObject(Schema.Models.ItemObjects itemObject)
         {
+            itemObject.TenantId = tenantId;
             _itemObjectsService.AddItemObject(itemObject);
         }
 
         [HttpPost("update")]
         public void Update(Schema.Models.ItemObjects itemObject)
         {
+            itemObject.TenantId = tenantId;
             _itemObjectsService.Update(itemObject);
         }
 
