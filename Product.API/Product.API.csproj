@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Product.Data\Product.Data.csproj" />
     <ProjectReference Include="..\Product.DbMigrations\Product.DbMigrations.csproj" />
+    <ProjectReference Include="..\Product.Service\Product.Service.csproj" />
   </ItemGroup>
 
 </Project>

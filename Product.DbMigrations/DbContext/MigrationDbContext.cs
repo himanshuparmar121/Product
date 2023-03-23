@@ -15,10 +15,10 @@ namespace Product.DbMigrations
         public MigrationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
         {
-            migrationDbContext = new MigrationDbContext(options);   
+            migrationDbContext = new MigrationDbContext(options);
         }
 
-        public DbSet<Item> Items { get; set; }
-        public DbSet<ItemObjects> ItemObjects { get; set; }
+        public DbSet<Product.Schema.Models.Item> Items { get; set; }
+        public DbSet<Product.Schema.Models.ItemObjects> ItemObjects { get; set; }
     }
 }

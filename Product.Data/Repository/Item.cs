@@ -1,13 +1,14 @@
-﻿using Product.Schema.Models;
+﻿using Product.Data.IRepository;
+using Product.Schema.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Product.Data
+namespace Product.Data.Repository
 {
-    public class Item
+    public class Item : ItemRepository
     {
         private readonly ApplicationDbContext ProductDbContext;
 
@@ -28,9 +29,9 @@ namespace Product.Data
             return item;
         }
 
-        public IEnumerable<Schema.Models.Item> GetAllItems()
+        public IEnumerable<Schema.Models.Item> GetAllItems(int tenantId)
         {
-            return ProductDbContext.Items.ToList();
+            return ProductDbContext.Items.Where(x => x.TenantId == tenantId).ToList();
         }
 
         public void Update(Schema.Models.Item item)
