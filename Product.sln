@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.DbMigrations", "Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.API", "Product.API\Product.API.csproj", "{850FEECA-92C0-45CD-9290-78787C923605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Data", "Product.Data\Product.Data.csproj", "{0CB87347-0848-4446-B2FD-64DD65B31516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Data", "Product.Data\Product.Data.csproj", "{0CB87347-0848-4446-B2FD-64DD65B31516}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Service", "Product.Service\Product.Service.csproj", "{95866922-F107-400B-A108-030E5429FC26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Service", "Product.Service\Product.Service.csproj", "{95866922-F107-400B-A108-030E5429FC26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Schema", "Product.Schema\Product.Schema.csproj", "{D6FA8165-25A1-44AF-8BC2-E618EA5443AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Gateway", "Product.Gateway\Product.Gateway.csproj", "{46A1770D-B3E0-4C81-AC14-CF8738C60A7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D6FA8165-25A1-44AF-8BC2-E618EA5443AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6FA8165-25A1-44AF-8BC2-E618EA5443AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6FA8165-25A1-44AF-8BC2-E618EA5443AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A1770D-B3E0-4C81-AC14-CF8738C60A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A1770D-B3E0-4C81-AC14-CF8738C60A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A1770D-B3E0-4C81-AC14-CF8738C60A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A1770D-B3E0-4C81-AC14-CF8738C60A7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

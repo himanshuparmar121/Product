@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Product.Schema.Models;
 using Product.Service.IServices;
 
 namespace Product.API.Controller
